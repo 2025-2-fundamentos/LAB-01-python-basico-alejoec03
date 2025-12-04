@@ -26,3 +26,20 @@ def pregunta_04():
      ('12', 3)]
 
     """
+
+    sumas = {}
+
+    with open("files/input/data.csv", "r") as file:
+        for linea in file:
+            columnas = linea.split("\t")
+            fecha = columnas[2]  
+            mes = fecha.split("-")[1] 
+            
+            if mes in sumas:
+                sumas[mes] += 1
+            else:
+                sumas[mes] = 1
+
+    return sorted(sumas.items())
+
+pregunta_04()

@@ -24,3 +24,21 @@ def pregunta_09():
      'jjj': 18}}
 
     """
+
+    conteo = {}
+    with open("files/input/data.csv", "r") as archivo:
+        for linea in archivo:
+            columnas = linea.strip().split("\t")
+            codigos = columnas[4].split(",") 
+
+            for codigo in codigos:
+                clave, _ = codigo.split(":") 
+                if clave in conteo:
+                    conteo[clave] += 1
+                else:
+                    conteo[clave] = 1
+    
+    conteo_ordenado = dict(sorted(conteo.items()))
+    return conteo_ordenado
+
+pregunta_09()
